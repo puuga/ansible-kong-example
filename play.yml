@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  vars:
+    KONG_ADMIN_URL: "http://localhost:8001"
+    KONG_JWT: ""
+  roles:
+    - role: kong_service
+      name: "testservice"
+      url: "http://httpbin.org"
