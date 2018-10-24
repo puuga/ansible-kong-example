@@ -9,4 +9,4 @@
 docker-compose up
 ```
 
-2. Verify if Konga is running by going to (http://localhost:1337)
+2. Verify if Konga is running by going to http://localhost:1337
