@@ -8,4 +8,8 @@
       service:
         name: "testservice"
         url: "http://httpbin.org"
-       
+    - role: kong_route
+      route:
+        service_name: "testservice"
+        paths: 
+          - "/foo/bar"
