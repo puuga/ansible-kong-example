@@ -1,6 +1,0 @@
-[submodule "roles/kong_service"]
-	path = roles/kong_service
-	url = https://github.com/rameezk/ansible-role-kong-service
-[submodule "roles/kong_route"]
-	path = roles/kong_route
-	url = https://github.com/rameezk/ansible-role-kong-route

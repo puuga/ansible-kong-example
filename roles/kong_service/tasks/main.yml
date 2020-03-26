@@ -1,0 +1,25 @@
+---
+- name: Check if service exists
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/{{service.name}}?jwt={{KONG_JWT}}"
+    method: GET
+    status_code: 200, 404
+  register: service_result
+
+- name: Create service
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/?jwt={{KONG_JWT}}"
+    method: POST
+    body: " {{ lookup('template','service.json.j2' ) | to_json }} "
+    status_code: 201
+    body_format: json
+  when: service_result.status == 404
+
+- name: Update a service
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/{{service.name}}?jwt={{KONG_JWT}}"
+    method: PATCH
+    body: " {{ lookup('template','service.json.j2') | to_json }} "
+    body_format: json
+    status_code: 200
+  when: service_result.status == 200

@@ -1,0 +1,24 @@
+---
+- name: Get service ID
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/{{route.service_name}}?jwt={{KONG_JWT}}"
+    method: GET
+    status_code: "200"
+  register: service_result
+
+- name: Fail if service ID cannot be found
+  fail:
+    msg: "Service cannot be found"
+  when: service_result.json.id is not defined
+
+- name: Create route
+  uri:
+    url: "{{KONG_ADMIN_URL}}/routes?jwt={{KONG_JWT}}"
+    method: POST
+    body:
+      service:
+        id: "{{ service_result.json.id }}"
+      paths: "{{ route.paths }}"
+    body_format: json
+    status_code: "200,201"
+
