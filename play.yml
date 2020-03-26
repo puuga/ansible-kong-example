@@ -8,5 +8,4 @@
       service:
         name: "testservice"
         url: "http://httpbin.org"
-    - role: kong_route
        
