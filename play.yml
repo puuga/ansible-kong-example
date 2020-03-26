@@ -4,7 +4,7 @@
     KONG_ADMIN_URL: "http://172.17.0.1:8001"
     KONG_JWT: ""
   roles:
-    - role: service_kong
+    - role: kong_service
       service:
         name: "testservice"
         url: "http://httpbin.org"
