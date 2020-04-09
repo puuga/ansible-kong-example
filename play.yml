@@ -17,3 +17,9 @@
       plugins:
         service_name: "httpbin-service-get"
         name: "key-auth"
+    - role: kong_consumer
+      consumer:
+        service_name: "httpbin-service-get"
+        username: "Jason"
+        plugins: "key-auth"
+        key: "123"

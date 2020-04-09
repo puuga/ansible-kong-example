@@ -1,0 +1,32 @@
+---
+- name: Get service ID
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/{{plugins.service_name}}?jwt={{KONG_JWT}}"
+    method: GET
+    status_code: "200"
+  register: service_result
+
+- name: Fail if service ID cannot be found
+  fail:
+    msg: "Service cannot be found"
+  when: service_result.json.id is not defined
+
+- name: Create consumer
+  uri:
+    url: "{{KONG_ADMIN_URL}}/consumer?jwt={{KONG_JWT}}"
+    method: POST
+    body:
+      service:
+        id: "{{ service_result.json.id }}"
+      username: "{{ consumer.name }}"
+    body_format: json
+    status_code: "200,201,409"
+
+- name: Create consumer Auth
+  uri:
+    url: "{{KONG_ADMIN_URL}}/consumer/{{ consumer.username }}/?{{ consumer.plugins }}jwt={{KONG_JWT}}"
+    method: POST
+    body:
+      key: "{{ consumer.key }}"
+    body_format: json
+    status_code: "200,201,409"
