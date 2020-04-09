@@ -13,7 +13,7 @@
 
 - name: Create consumer
   uri:
-    url: "{{KONG_ADMIN_URL}}/consumer?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/consumers?jwt={{KONG_JWT}}"
     method: POST
     body:
       username: "{{ consumer.name }}"
@@ -22,7 +22,7 @@
 
 - name: Create consumer Auth
   uri:
-    url: "{{KONG_ADMIN_URL}}/consumer/{{ consumer.username }}/?{{ consumer.plugins }}jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/consumers/{{ consumer.username }}/?{{ consumer.plugins }}jwt={{KONG_JWT}}"
     method: POST
     body:
       key: "{{ consumer.key }}"
