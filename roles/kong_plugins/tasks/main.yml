@@ -1,7 +1,7 @@
 ---
 - name: Get service ID
   uri:
-    url: "{{KONG_ADMIN_URL}}/services/{{route.service_name}}?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/services/{{plugins.service_name}}?jwt={{KONG_JWT}}"
     method: GET
     status_code: "200"
   register: service_result
@@ -13,12 +13,12 @@
 
 - name: Create route
   uri:
-    url: "{{KONG_ADMIN_URL}}/{{route.service_name}}/routes?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/plugins?jwt={{KONG_JWT}}"
     method: POST
     body:
       service:
         id: "{{ service_result.json.id }}"
-      hosts[]: "{{ route.hosts }}"
+      name: "{{ plugins.name }}"
     body_format: json
     status_code: "200,201"
 
