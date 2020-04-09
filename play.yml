@@ -6,10 +6,15 @@
   roles:
     - role: kong_service
       service:
-        name: "testservice"
-        url: "http://httpbin.org"
+        name: "httpbin-service-get"
+        url: "http://eu.httpbin.org/get"
     - role: kong_route
       route:
-        service_name: "testservice"
-        paths: 
-          - "/foo/bar"
+        service_name: "httpbin-service-get"
+        hosts:
+          - "examplehttpbin.com"
+    - role: kong_plugins
+      route:
+        service_name: "httpbin-service-get"
+        name:
+          - "key-auth"
