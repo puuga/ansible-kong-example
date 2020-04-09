@@ -1,20 +1,15 @@
 ---
 - hosts: localhost
   vars:
-    KONG_ADMIN_URL: "http://{{ IPADD }}:8001"
+    KONG_ADMIN_URL: "http://127.0.0.1:8001"
     KONG_JWT: ""
   roles:
     - role: kong_service
       service:
-        name: "httpbin-service-get"
-        url: "http://eu.httpbin.org/get"
+        name: "testservice"
+        url: "http://httpbin.org"
     - role: kong_route
       route:
-        service_name: "httpbin-service-get"
-        hosts:
-          - "examplehttpbin.com"
-    - role: kong_plugins
-      plugins:
-        service_name: "httpbin-service-get"
-        name:
-          - "key-auth"
+        service_name: "testservice"
+        paths:
+          - "/foo/bar"
