@@ -11,5 +11,5 @@
     - role: kong_route
       route:
         service_name: "testservice"
-        paths:
-          - "/foo/bar"
+        hosts:
+          - "examplehttpbin.com"
