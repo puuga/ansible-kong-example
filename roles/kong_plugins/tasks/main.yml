@@ -11,9 +11,9 @@
     msg: "Service cannot be found"
   when: service_result.json.id is not defined
 
-- name: Create Plugins
+- name: Create route
   uri:
-    url: "{{KONG_ADMIN_URL}}/services/{{plugins.service_name}}/plugins?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/plugins?jwt={{KONG_JWT}}"
     method: POST
     body:
       service:
@@ -21,4 +21,3 @@
       name: "{{ plugins.name }}"
     body_format: json
     status_code: "200,201"
-
