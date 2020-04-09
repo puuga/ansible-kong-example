@@ -11,19 +11,13 @@
     msg: "Service cannot be found"
   when: service_result.json.id is not defined
 
-- name: Generate route ID
-  set_fact:
-    route_id: "{{ 9999999999999999999999 | random | to_uuid }}"
-
 - name: Create route
   uri:
-    url: "{{KONG_ADMIN_URL}}/routes/{{ route_id }}?jwt={{KONG_JWT}}"
-    method: PUT
+    url: "{{KONG_ADMIN_URL}}/routes?jwt={{KONG_JWT}}"
+    method: POST
     body:
       service:
         id: "{{ service_result.json.id }}"
-      hosts: "{{ route.hosts }}"
+      paths: "{{ route.paths }}"
     body_format: json
     status_code: "200,201"
-    body_format: json
-
