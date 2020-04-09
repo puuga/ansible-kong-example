@@ -14,7 +14,7 @@
         hosts:
           - "examplehttpbin.com"
     - role: kong_plugins
-      route:
+      plugins:
         service_name: "testservice"
         name:
           - "key-auth"
