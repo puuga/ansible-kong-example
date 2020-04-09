@@ -1,7 +1,7 @@
 ---
 - name: Get service ID
   uri:
-    url: "{{KONG_ADMIN_URL}}/services/{{plugins.service_name}}?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/services/{{consumer.service_name}}?jwt={{KONG_JWT}}"
     method: GET
     status_code: "200"
   register: service_result
