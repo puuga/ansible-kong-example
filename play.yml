@@ -13,3 +13,8 @@
         service_name: "testservice"
         hosts:
           - "examplehttpbin.com"
+    - role: kong_plugins
+      route:
+        service_name: "testservice"
+        name:
+          - "key-auth"
