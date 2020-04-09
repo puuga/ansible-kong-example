@@ -16,5 +16,4 @@
     - role: kong_plugins
       plugins:
         service_name: "testservice"
-        name:
-          - "key-auth"
+        name: "key-auth"
