@@ -14,7 +14,7 @@
         hosts:
           - "examplehttpbin.com"
     - role: kong_plugins
-      route:
+      plugins:
         service_name: "httpbin-service-get"
         name:
           - "key-auth"
