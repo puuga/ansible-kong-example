@@ -13,7 +13,7 @@
 
 - name: Create Plugins
   uri:
-    url: "{{KONG_ADMIN_URL}}/plugins?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/{{plugins.service_name}}/plugins?jwt={{KONG_JWT}}"
     method: POST
     body:
       service:
