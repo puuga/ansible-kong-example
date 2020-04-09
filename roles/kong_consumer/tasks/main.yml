@@ -16,7 +16,7 @@
     url: "{{KONG_ADMIN_URL}}/consumers?jwt={{KONG_JWT}}"
     method: POST
     body:
-      username: "{{ consumer.name }}"
+      username: "{{ consumer.username }}"
     body_format: json
     status_code: "200,201,409"
 
