@@ -4,7 +4,8 @@
     KONG_ADMIN_URL: "http://{{ IPADD }}:8001"
     KONG_JWT: ""
   roles:
-    # httpbin-service-get
+    # [START - httpbin-service-get]
+    # httpbin-service-get examplehttpbin.com => http://eu.httpbin.org/get
     - role: kong_service
       service:
         name: "httpbin-service-get"
@@ -24,7 +25,9 @@
         username: "Jason"
         plugins: "key-auth"
         key: "1234"
+    # [END - httpbin-service-get]
 
+    # [START - hello-world-01]
     # hello-world-01 http://hello-world.com/api/v1/employees => http://dummy.restapiexample.com/api/v1/employees
     - role: kong_service
       service:
@@ -45,7 +48,9 @@
         username: "Jason"
         plugins: "key-auth"
         key: "1234"
+    # [END - hello-world-01]
 
+    # [START - github]
     # github http://custom.github.com/users/puuga => https://api.github.com//users/puuga
     - role: kong_service
       service:
@@ -66,4 +71,5 @@
         username: "Jason"
         plugins: "key-auth"
         key: "1234"
+    # [END - github]
   
