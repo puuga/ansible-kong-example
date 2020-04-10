@@ -22,4 +22,4 @@
         service_name: "httpbin-service-get"
         username: "Jason"
         plugins: "key-auth"
-        key: "123"
+        key: "1234"
