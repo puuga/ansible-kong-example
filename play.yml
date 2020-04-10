@@ -4,6 +4,7 @@
     KONG_ADMIN_URL: "http://{{ IPADD }}:8001"
     KONG_JWT: ""
   roles:
+    # httpbin-service-get
     - role: kong_service
       service:
         name: "httpbin-service-get"
@@ -23,13 +24,7 @@
         username: "Jason"
         plugins: "key-auth"
         key: "1234"
-
----
-- hosts: localhost
-  vars:
-    KONG_ADMIN_URL: "http://{{ IPADD }}:8001"
-    KONG_JWT: ""
-  roles:
+    # hello-world-01
     - role: kong_service
       service:
         name: "hello-world-01"
