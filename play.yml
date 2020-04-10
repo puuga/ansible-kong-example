@@ -46,7 +46,7 @@
         plugins: "key-auth"
         key: "1234"
 
-    # github
+    # github http://custom.github.com/users/puuga => https://api.github.com//users/puuga
     - role: kong_service
       service:
         name: "github"
