@@ -23,3 +23,30 @@
         username: "Jason"
         plugins: "key-auth"
         key: "1234"
+
+---
+  - hosts: localhost
+    vars:
+      KONG_ADMIN_URL: "http://{{ IPADD }}:8001"
+      KONG_JWT: ""
+    roles:
+      - role: kong_service
+        service:
+          name: "hello-world-01"
+          url: "http://hello-world.com"
+      - role: kong_route
+        route:
+          service_name: "hello-world-01"
+          hosts:
+            - "hello-world.com"
+      - role: kong_plugins
+        plugins:
+          service_name: "hello-world-01"
+          name: "key-auth"
+      - role: kong_consumer
+        consumer:
+          service_name: "hello-world-01"
+          username: "Jason"
+          plugins: "key-auth"
+          key: "1234"
+  
