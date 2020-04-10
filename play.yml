@@ -29,6 +29,7 @@
 
     # [START - hello-world-01]
     # hello-world-01 http://hello-world.com/api/v1/employees => http://dummy.restapiexample.com/api/v1/employees
+    # hello-world-01 http://dummy.restapiexample.com/api/v1/employees => http://dummy.restapiexample.com/api/v1/employees
     - role: kong_service
       service:
         name: "hello-world-01"
@@ -38,6 +39,7 @@
         service_name: "hello-world-01"
         hosts:
           - "hello-world.com"
+          - "hello-world.generali.co.th"
     - role: kong_plugins
       plugins:
         service_name: "hello-world-01"
@@ -51,7 +53,8 @@
     # [END - hello-world-01]
 
     # [START - github]
-    # github http://custom.github.com/users/puuga => https://api.github.com//users/puuga
+    # github http://custom.github.com/users/puuga => https://api.github.com/users/puuga
+    # github http://custom-github.generali.co.th/users/puuga => https://api.github.com/users/puuga
     - role: kong_service
       service:
         name: "github"
@@ -61,6 +64,7 @@
         service_name: "github"
         hosts:
           - "custom.github.com"
+          - "custom-github.generali.co.th"
     - role: kong_plugins
       plugins:
         service_name: "github"
