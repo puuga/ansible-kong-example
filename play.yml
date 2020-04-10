@@ -48,22 +48,22 @@
 
     # github
     - role: kong_service
-    service:
-      name: "github"
-      url: "https://api.github.com"
+      service:
+        name: "github"
+        url: "https://api.github.com"
     - role: kong_route
-    route:
-      service_name: "github"
-      hosts:
-        - "custom.github.com"
+      route:
+        service_name: "github"
+        hosts:
+          - "custom.github.com"
     - role: kong_plugins
-    plugins:
-      service_name: "github"
-      name: "key-auth"
+      plugins:
+        service_name: "github"
+        name: "key-auth"
     - role: kong_consumer
-    consumer:
-      service_name: "github"
-      username: "Jason"
-      plugins: "key-auth"
-      key: "1234"
+      consumer:
+        service_name: "github"
+        username: "Jason"
+        plugins: "key-auth"
+        key: "1234"
   
