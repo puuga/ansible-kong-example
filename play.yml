@@ -28,7 +28,7 @@
     - role: kong_service
       service:
         name: "hello-world-01"
-        url: "https://api.github.com/users/puuga"
+        url: "https://api.github.com"
     - role: kong_route
       route:
         service_name: "hello-world-01"
