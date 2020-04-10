@@ -25,7 +25,7 @@
         plugins: "key-auth"
         key: "1234"
 
-    # hello-world-01 http://dummy.restapiexample.com/api/v1/employees
+    # hello-world-01 http://hello-world.com/api/v1/employees => http://dummy.restapiexample.com/api/v1/employees
     - role: kong_service
       service:
         name: "hello-world-01"
